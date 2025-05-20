@@ -16,7 +16,7 @@ const Experience: React.FC = () => {
   const experiences: ExperienceItem[] = [
     {
       company: 'Ontech ICT',
-      role: 'Remote Technical Associate',
+      role: 'Sales & Marketing Specialist',
       duration: 'Mar 2025 - Present',
       location: 'Remote (Part-time)',
       description: [
@@ -32,7 +32,7 @@ const Experience: React.FC = () => {
     },
     {
       company: 'Eightcap Bangladesh',
-      role: 'Marketing & Sales Executive',
+      role: 'Sales & Marketing Intern',
       duration: 'Jan 2025 - Feb 2025',
       location: 'Melbourne, Australia (Remote)',
       description: [
@@ -48,7 +48,7 @@ const Experience: React.FC = () => {
     },
     {
       company: 'Doin Tech',
-      role: 'Client Experience Specialist',
+      role: 'Virtual Executive, Client Experience',
       duration: 'Jan 2024 - Dec 2024',
       location: 'Dhaka, Bangladesh (Remote)',
       description: [
