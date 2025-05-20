@@ -34,7 +34,7 @@ const Projects: React.FC = () => {
       description: 'My personal portfolio website built with React and Tailwind CSS, featuring smooth animations and responsive design.',
       tags: ['React', 'Tailwind CSS', 'Framer Motion'],
       image: 'https://images.unsplash.com/photo-1498050108023-c5249f4df085?auto=format&fit=crop&w=800&q=80',
-      github: 'https://github.com/nafizalzawad/portfolio',
+      github: 'https://github.com/nafizalzawad/zawad.dev',
       demo: '#'
     }
   ];
