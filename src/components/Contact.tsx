@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
@@ -10,14 +10,75 @@ import {
   CardHeader,
   CardTitle,
 } from '@/components/ui/card';
-import { Github, Linkedin, Mail, MessageSquare } from 'lucide-react';
+import { Github, Linkedin, Mail, MessageSquare, Loader2 } from 'lucide-react';
 import { toast } from 'sonner';
+import emailjs from 'emailjs-com';
+import { useForm } from 'react-hook-form';
+import {
+  Form,
+  FormControl,
+  FormField,
+  FormItem,
+  FormLabel,
+  FormMessage,
+} from '@/components/ui/form';
+import * as z from 'zod';
+import { zodResolver } from '@hookform/resolvers/zod';
+
+const formSchema = z.object({
+  name: z.string().min(2, { message: 'Name must be at least 2 characters.' }),
+  email: z.string().email({ message: 'Please enter a valid email address.' }),
+  subject: z.string().min(2, { message: 'Subject must be at least 2 characters.' }),
+  message: z.string().min(10, { message: 'Message must be at least 10 characters.' }),
+});
+
+type FormValues = z.infer<typeof formSchema>;
 
 const Contact: React.FC = () => {
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    // In a real implementation, you would submit the form to a backend service
-    toast.success("Message sent successfully! I'll get back to you soon.");
+  const [isSubmitting, setIsSubmitting] = useState(false);
+
+  const form = useForm<FormValues>({
+    resolver: zodResolver(formSchema),
+    defaultValues: {
+      name: '',
+      email: '',
+      subject: '',
+      message: '',
+    },
+  });
+
+  const onSubmit = async (data: FormValues) => {
+    setIsSubmitting(true);
+
+    try {
+      // To use EmailJS:
+      // 1. Sign up at https://www.emailjs.com/
+      // 2. Create a new service (Gmail, Outlook, etc)
+      // 3. Create an email template
+      // 4. Get your user ID and service ID
+      const templateParams = {
+        from_name: data.name,
+        from_email: data.email,
+        subject: data.subject,
+        message: data.message,
+      };
+
+      // Replace with your actual service ID, template ID, and user ID
+      await emailjs.send(
+        'service_fe4lj4h', 
+        'template_30q6lme',
+        templateParams, 
+        '6KKthX0Gifqgr542F'
+      );
+
+      toast.success("Message sent successfully! I'll get back to you soon.");
+      form.reset();
+    } catch (error) {
+      console.error('Error sending message:', error);
+      toast.error('Failed to send message. Please try again later.');
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   const socialLinks = [
@@ -44,62 +105,97 @@ const Contact: React.FC = () => {
               </CardDescription>
             </CardHeader>
             <CardContent>
-              <form onSubmit={handleSubmit} className="space-y-4">
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                  <div className="space-y-2">
-                    <label htmlFor="name" className="text-sm font-medium">
-                      Name
-                    </label>
-                    <Input 
-                      id="name" 
-                      placeholder="Enter your name" 
-                      required
-                      className="bg-background border-muted focus:border-primary"
+              <Form {...form}>
+                <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-4">
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                    <FormField
+                      control={form.control}
+                      name="name"
+                      render={({ field }) => (
+                        <FormItem className="space-y-2">
+                          <FormLabel>Name</FormLabel>
+                          <FormControl>
+                            <Input 
+                              {...field} 
+                              placeholder="Enter your name" 
+                              className="bg-background border-muted focus:border-primary"
+                              disabled={isSubmitting}
+                            />
+                          </FormControl>
+                          <FormMessage />
+                        </FormItem>
+                      )}
+                    />
+                    <FormField
+                      control={form.control}
+                      name="email"
+                      render={({ field }) => (
+                        <FormItem className="space-y-2">
+                          <FormLabel>Email</FormLabel>
+                          <FormControl>
+                            <Input 
+                              {...field} 
+                              type="email" 
+                              placeholder="Enter your email" 
+                              className="bg-background border-muted focus:border-primary"
+                              disabled={isSubmitting}
+                            />
+                          </FormControl>
+                          <FormMessage />
+                        </FormItem>
+                      )}
                     />
                   </div>
-                  <div className="space-y-2">
-                    <label htmlFor="email" className="text-sm font-medium">
-                      Email
-                    </label>
-                    <Input 
-                      id="email" 
-                      type="email" 
-                      placeholder="Enter your email" 
-                      required
-                      className="bg-background border-muted focus:border-primary" 
-                    />
-                  </div>
-                </div>
-                <div className="space-y-2">
-                  <label htmlFor="subject" className="text-sm font-medium">
-                    Subject
-                  </label>
-                  <Input 
-                    id="subject" 
-                    placeholder="Enter subject" 
-                    required
-                    className="bg-background border-muted focus:border-primary"
+                  <FormField
+                    control={form.control}
+                    name="subject"
+                    render={({ field }) => (
+                      <FormItem className="space-y-2">
+                        <FormLabel>Subject</FormLabel>
+                        <FormControl>
+                          <Input 
+                            {...field} 
+                            placeholder="Enter subject" 
+                            className="bg-background border-muted focus:border-primary"
+                            disabled={isSubmitting}
+                          />
+                        </FormControl>
+                        <FormMessage />
+                      </FormItem>
+                    )}
                   />
-                </div>
-                <div className="space-y-2">
-                  <label htmlFor="message" className="text-sm font-medium">
-                    Message
-                  </label>
-                  <Textarea 
-                    id="message" 
-                    placeholder="Enter your message" 
-                    required
-                    rows={5}
-                    className="bg-background border-muted focus:border-primary" 
+                  <FormField
+                    control={form.control}
+                    name="message"
+                    render={({ field }) => (
+                      <FormItem className="space-y-2">
+                        <FormLabel>Message</FormLabel>
+                        <FormControl>
+                          <Textarea 
+                            {...field} 
+                            placeholder="Enter your message" 
+                            rows={5}
+                            className="bg-background border-muted focus:border-primary"
+                            disabled={isSubmitting}
+                          />
+                        </FormControl>
+                        <FormMessage />
+                      </FormItem>
+                    )}
                   />
-                </div>
-              </form>
+                  <Button type="submit" className="w-full" disabled={isSubmitting}>
+                    {isSubmitting ? (
+                      <>
+                        <Loader2 className="mr-2 h-4 w-4 animate-spin" />
+                        Sending...
+                      </>
+                    ) : (
+                      'Send Message'
+                    )}
+                  </Button>
+                </form>
+              </Form>
             </CardContent>
-            <CardFooter>
-              <Button type="submit" onClick={handleSubmit} className="w-full">
-                Send Message
-              </Button>
-            </CardFooter>
           </Card>
           
           {/* Contact Info */}
