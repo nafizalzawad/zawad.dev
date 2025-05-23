@@ -36,7 +36,7 @@ type FormValues = z.infer<typeof formSchema>;
 
 // Constants for EmailJS - Replace these with your actual values
 const SERVICE_ID = 'service_fe4lj4h';  // Replace with your actual service ID
-const TEMPLATE_ID = 'template_30q6lme'; // Replace with your actual template ID
+const TEMPLATE_ID = 'template_sn978xi'; // Replace with your actual template ID
 const PUBLIC_KEY = '6KKthX0Gifqgr542F'; // Replace with your actual PUBLIC KEY (not user ID)
 
 const Contact: React.FC = () => {
