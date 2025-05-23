@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
@@ -34,8 +34,19 @@ const formSchema = z.object({
 
 type FormValues = z.infer<typeof formSchema>;
 
+// Constants for EmailJS - Replace these with your actual values
+const SERVICE_ID = 'service_fe4lj4h';  // Replace with your actual service ID
+const TEMPLATE_ID = 'template_30q6lme'; // Replace with your actual template ID
+const PUBLIC_KEY = '6KKthX0Gifqgr542F'; // Replace with your actual PUBLIC KEY (not user ID)
+
 const Contact: React.FC = () => {
   const [isSubmitting, setIsSubmitting] = useState(false);
+
+  // Initialize EmailJS when component mounts
+  useEffect(() => {
+    // Initialize EmailJS with your PUBLIC KEY, not user ID
+    emailjs.init(PUBLIC_KEY);
+  }, []);
 
   const form = useForm<FormValues>({
     resolver: zodResolver(formSchema),
@@ -49,13 +60,9 @@ const Contact: React.FC = () => {
 
   const onSubmit = async (data: FormValues) => {
     setIsSubmitting(true);
+    console.log("Attempting to send email with EmailJS");
 
     try {
-      // To use EmailJS:
-      // 1. Sign up at https://www.emailjs.com/
-      // 2. Create a new service (Gmail, Outlook, etc)
-      // 3. Create an email template
-      // 4. Get your user ID and service ID
       const templateParams = {
         from_name: data.name,
         from_email: data.email,
@@ -63,19 +70,25 @@ const Contact: React.FC = () => {
         message: data.message,
       };
 
-      // Replace with your actual service ID, template ID, and user ID
-      await emailjs.send(
-        'service_fe4lj4h', 
-        'template_30q6lme',
-        templateParams, 
-        '6KKthX0Gifqgr542F'
-      );
+      console.log("Email parameters:", { 
+        serviceId: SERVICE_ID,
+        templateId: TEMPLATE_ID,
+        params: templateParams
+      });
 
+      // Using send method with the latest EmailJS approach (no need for user ID as third parameter)
+      const result = await emailjs.send(
+        SERVICE_ID, 
+        TEMPLATE_ID,
+        templateParams
+      );
+      
+      console.log("Email sent successfully:", result);
       toast.success("Message sent successfully! I'll get back to you soon.");
       form.reset();
     } catch (error) {
       console.error('Error sending message:', error);
-      toast.error('Failed to send message. Please try again later.');
+      toast.error('Failed to send message. Please check console for details.');
     } finally {
       setIsSubmitting(false);
     }
