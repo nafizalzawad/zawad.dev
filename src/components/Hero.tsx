@@ -4,18 +4,67 @@ import { ArrowDown, FileText } from 'lucide-react';
 
 const Hero: React.FC = () => {
   const [isLoaded, setIsLoaded] = useState(false);
+  const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
   
   useEffect(() => {
     setIsLoaded(true);
   }, []);
 
+  useEffect(() => {
+    const handleMouseMove = (e: MouseEvent) => {
+      const x = (e.clientX / window.innerWidth) * 100;
+      const y = (e.clientY / window.innerHeight) * 100;
+      setMousePosition({ x, y });
+    };
+
+    window.addEventListener('mousemove', handleMouseMove);
+    return () => window.removeEventListener('mousemove', handleMouseMove);
+  }, []);
+
   return (
-    <section id="home" className="min-h-screen flex items-center relative bg-grid-pattern overflow-hidden">
-      <div className="absolute top-0 left-0 w-full h-full bg-gradient-to-b from-background/80 to-background"></div>
+    <section id="hero-section" className="min-h-screen flex items-center relative overflow-hidden">
+      {/* Moving Grid Background */}
+      <div className="absolute inset-0 z-0">
+        <div 
+          className="absolute inset-0 opacity-30 transition-transform duration-300 ease-out"
+          style={{
+            backgroundImage: `
+              linear-gradient(rgba(64, 224, 208, 0.4) 1px, transparent 1px),
+              linear-gradient(90deg, rgba(64, 224, 208, 0.4) 1px, transparent 1px)
+            `,
+            backgroundSize: '50px 50px',
+            transform: `translate(${mousePosition.x * 0.1}px, ${mousePosition.y * 0.1}px)`,
+          }}
+        />
+        <div 
+          className="absolute inset-0 opacity-20 transition-transform duration-500 ease-out"
+          style={{
+            backgroundImage: `
+              linear-gradient(rgba(64, 224, 208, 0.6) 1px, transparent 1px),
+              linear-gradient(90deg, rgba(64, 224, 208, 0.6) 1px, transparent 1px)
+            `,
+            backgroundSize: '100px 100px',
+            transform: `translate(${mousePosition.x * 0.05}px, ${mousePosition.y * 0.05}px)`,
+          }}
+        />
+        <div 
+          className="absolute inset-0 opacity-10 transition-transform duration-700 ease-out"
+          style={{
+            backgroundImage: `
+              linear-gradient(rgba(64, 224, 208, 0.8) 1px, transparent 1px),
+              linear-gradient(90deg, rgba(64, 224, 208, 0.8) 1px, transparent 1px)
+            `,
+            backgroundSize: '150px 150px',
+            transform: `translate(${mousePosition.x * 0.02}px, ${mousePosition.y * 0.02}px)`,
+          }}
+        />
+      </div>
+      
+      <div className="absolute top-0 left-0 w-full h-full bg-gradient-to-b from-background/90 to-background/80 z-1"></div>
       
       {/* Animated gradient orbs */}
-      <div className="absolute top-1/4 -left-20 w-80 h-80 bg-primary/10 rounded-full blur-3xl animate-pulse-slow"></div>
-      <div className="absolute bottom-1/4 -right-20 w-80 h-80 bg-secondary/10 rounded-full blur-3xl animate-pulse-slow delay-1000"></div>
+      <div className="absolute top-1/4 -left-20 w-80 h-80 bg-primary/10 rounded-full blur-3xl animate-pulse z-1"></div>
+      <div className="absolute bottom-1/4 -right-20 w-80 h-80 bg-secondary/10 rounded-full blur-3xl animate-pulse z-1" style={{ animationDelay: '1s' }}></div>
       
       <div className="container mx-auto px-4 py-16 relative z-10">
         <div className="max-w-3xl">
@@ -59,7 +108,7 @@ const Hero: React.FC = () => {
             }`}
           >
             <Button asChild variant="default" size="lg">
-              <a href="/Nafiz Al Zawad_Resume.pdf" target="_blank" rel="noopener noreferrer">
+              <a href="/resume.pdf" target="_blank" rel="noopener noreferrer">
                 <FileText className="mr-2 h-4 w-4" />
                 View Resume
               </a>
@@ -73,7 +122,7 @@ const Hero: React.FC = () => {
         </div>
       </div>
       
-      <div className="absolute bottom-10 left-1/2 transform -translate-x-1/2 flex flex-col items-center">
+      <div className="absolute bottom-10 left-1/2 transform -translate-x-1/2 flex flex-col items-center z-10">
         <span className="text-slate text-sm mb-2">Scroll Down</span>
         <ArrowDown className="text-primary animate-bounce h-6 w-6" />
       </div>
