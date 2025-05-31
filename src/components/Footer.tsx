@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 const Footer: React.FC = () => {
   const currentYear = new Date().getFullYear();
@@ -17,6 +18,7 @@ const Footer: React.FC = () => {
             <a href="#about" className="text-slate hover:text-primary transition-colors">About</a>
             <a href="#experience" className="text-slate hover:text-primary transition-colors">Experience</a>
             <a href="#projects" className="text-slate hover:text-primary transition-colors">Projects</a>
+            <Link to="/writings" className="text-slate hover:text-primary transition-colors">Writings</Link>
             <a href="#contact" className="text-slate hover:text-primary transition-colors">Contact</a>
           </div>
         </div>
@@ -30,5 +32,3 @@ const Footer: React.FC = () => {
     </footer>
   );
 };
-
-export default Footer;
