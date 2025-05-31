@@ -21,7 +21,7 @@ const Header: React.FC = () => {
     { name: 'About', href: '/#about' },
     { name: 'Experience', href: '/#experience' },
     { name: 'Projects', href: '/#projects' },
-    { name: 'Writings', href: '/writings' },
+    { name: 'Writing', href: '/writing' },
     { name: 'Contact', href: '/#contact' },
   ];
 
@@ -33,7 +33,7 @@ const Header: React.FC = () => {
     >
       <div className="container mx-auto px-4 flex justify-between items-center">
         <Link to="/" className="text-xl font-bold text-primary">
-          Nafiz<span className="text-foreground">.dev</span>
+          Zawad<span className="text-foreground">.dev</span>
         </Link>
 
         {/* Desktop Navigation */}
@@ -62,7 +62,7 @@ const Header: React.FC = () => {
             ))}
             <li>
               <Button asChild size="sm" variant="outline" className="border-primary text-primary hover:text-primary-foreground">
-                <a href="/resume.pdf" target="_blank" rel="noopener noreferrer">Resume</a>
+                <a href="/Nafiz Al Zawad_Resume.pdf" target="_blank" rel="noopener noreferrer">Resume</a>
               </Button>
             </li>
           </ul>
