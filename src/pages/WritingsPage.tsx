@@ -79,14 +79,14 @@ const WritingsPage: React.FC = () => {
           </div>
           
           <h1 className="text-4xl md:text-5xl font-bold mb-6 text-foreground">
-            My Writings & Publications
+            My Writings & Digital Content
           </h1>
           
           <div className="mb-8">
             <p className="text-lg text-slate">
               Previously a digital content writer at <span className="font-medium">Janakantha</span>, 
               I enjoy creating engaging content about technology, finance, and sports. 
-              Here's a collection of my featured articles and publications.
+              Here's a collection of my featured articles and digital content.
             </p>
           </div>
 
