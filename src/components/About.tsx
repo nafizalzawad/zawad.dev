@@ -49,7 +49,7 @@ const About: React.FC = () => {
               <div className="absolute inset-0 bg-primary/20 rounded-md translate-x-3 translate-y-3 transition-transform group-hover:translate-x-5 group-hover:translate-y-5"></div>
               <div className="relative z-10">
                 <img 
-                  src="./Nafiz Al Zawad.jpg" 
+                  src="https://drive.google.com/file/d/16yxlvDggPOnAVYOiyUBQW4gQyTX3LGZp/view?usp=sharing" 
                   alt="Nafiz Al Zawad"
                   className="rounded-md w-full aspect-square object-cover" 
                 />
