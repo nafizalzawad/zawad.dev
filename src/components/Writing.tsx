@@ -2,29 +2,30 @@ import React from 'react';
 import { FileText } from 'lucide-react';
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
+import { Link } from 'react-router-dom';
 
 const Writing: React.FC = () => {
   const articles = [
     {
       title: 'The Rise of Blockchain in Banking: Beyond Cryptocurrency',
-      //excerpt: 'How blockchain technology is revolutionizing traditional banking systems through smart contracts, digital identity verification, and secure transactions.',
+      excerpt: 'How blockchain technology is revolutionizing traditional banking systems through smart contracts, digital identity verification, and secure transactions.',
       date: 'March 15, 2023',
       readTime: '8 min read',
-      //link: '#'
+      link: '#'
     },
     {
       title: 'World Cup 2022: How Technology Changed The Beautiful Game',
-      //excerpt: 'An analysis of how VAR, goal-line technology, and data analytics have transformed football at the highest level during the Qatar World Cup.',
+      excerpt: 'An analysis of how VAR, goal-line technology, and data analytics have transformed football at the highest level during the Qatar World Cup.',
       date: 'December 20, 2022',
       readTime: '6 min read',
       link: '#'
     },
     {
       title: 'The Evolution of Football Tactics: From 2-3-5 to Modern Systems',
-      //excerpt: 'A deep dive into how football formations and strategies have evolved over the decades, reflecting changes in athleticism, technology, and strategic thinking.',
+      excerpt: 'A deep dive into how football formations and strategies have evolved over the decades, reflecting changes in athleticism, technology, and strategic thinking.',
       date: 'October 5, 2022',
       readTime: '10 min read',
-      //link: '#'
+      link: '#'
     }
   ];
 
@@ -38,7 +39,7 @@ const Writing: React.FC = () => {
             <p className="text-lg">
               Previously a digital content writer at <span className="font-medium">Janakantha</span>, 
               I enjoy creating engaging content about technology, finance, and sports. 
-              Here are some of my articles:
+              Here are some of my featured articles:
             </p>
           </div>
 
@@ -68,6 +69,12 @@ const Writing: React.FC = () => {
                 </CardFooter>
               </Card>
             ))}
+          </div>
+          
+          <div className="mt-10 text-center">
+            <Button asChild variant="outline" className="border-primary text-primary hover:text-primary-foreground">
+              <Link to="/writings">View All Writings</Link>
+            </Button>
           </div>
         </div>
       </div>
