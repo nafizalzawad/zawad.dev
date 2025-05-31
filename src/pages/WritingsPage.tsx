@@ -17,28 +17,22 @@ const WritingsPage: React.FC = () => {
   // Using the same articles data structure from the Writing component
   const articles = [
     {
-      title: 'The Rise of Blockchain in Banking: Beyond Cryptocurrency',
-      excerpt: 'How blockchain technology is revolutionizing traditional banking systems through smart contracts, digital identity verification, and secure transactions.',
-      date: 'March 15, 2023',
-      readTime: '8 min read',
-      link: '#',
-      content: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam auctor, nisl eget ultricies lacinia, nisl nisl aliquam nisl, eget ultricies nisl nisl eget nisl. Nullam auctor, nisl eget ultricies lacinia, nisl nisl aliquam nisl, eget ultricies nisl nisl eget nisl. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam auctor, nisl eget ultricies lacinia, nisl nisl aliquam nisl, eget ultricies nisl nisl eget nisl. Nullam auctor, nisl eget ultricies lacinia, nisl nisl aliquam nisl, eget ultricies nisl nisl eget nisl.'
+      title: 'ওজিল নেই, জার্মানি এবার দোষ চাপাবে কার উপর',
+      date: 'December 02, 2022',
+      readTime: '2:15 min',
+      link: 'https://fb.watch/zWqGGPI5uB/',
     },
     {
-      title: 'World Cup 2022: How Technology Changed The Beautiful Game',
-      excerpt: 'An analysis of how VAR, goal-line technology, and data analytics have transformed football at the highest level during the Qatar World Cup.',
-      date: 'December 20, 2022',
-      readTime: '6 min read',
-      link: '#',
-      content: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam auctor, nisl eget ultricies lacinia, nisl nisl aliquam nisl, eget ultricies nisl nisl eget nisl. Nullam auctor, nisl eget ultricies lacinia, nisl nisl aliquam nisl, eget ultricies nisl nisl eget nisl. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam auctor, nisl eget ultricies lacinia, nisl nisl aliquam nisl, eget ultricies nisl nisl eget nisl. Nullam auctor, nisl eget ultricies lacinia, nisl nisl aliquam nisl, eget ultricies nisl nisl eget nisl.'
+      title: 'এল ক্লাসিকোর ইতিহাস',
+      date: 'October 16, 2022',
+      readTime: '3:34 min',
+      link: 'https://fb.watch/zWqWQ0riP7/',
     },
     {
-      title: 'The Evolution of Football Tactics: From 2-3-5 to Modern Systems',
-      excerpt: 'A deep dive into how football formations and strategies have evolved over the decades, reflecting changes in athleticism, technology, and strategic thinking.',
+      title: 'ফুটবল বিশ্বকাপ থেকে নিষিদ্ধ করা হয় যে দেশ গুলোকে',
       date: 'October 5, 2022',
-      readTime: '10 min read',
-      link: '#',
-      content: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam auctor, nisl eget ultricies lacinia, nisl nisl aliquam nisl, eget ultricies nisl nisl eget nisl. Nullam auctor, nisl eget ultricies lacinia, nisl nisl aliquam nisl, eget ultricies nisl nisl eget nisl. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam auctor, nisl eget ultricies lacinia, nisl nisl aliquam nisl, eget ultricies nisl nisl eget nisl. Nullam auctor, nisl eget ultricies lacinia, nisl nisl aliquam nisl, eget ultricies nisl nisl eget nisl.'
+      readTime: '3:41 min',
+      link: 'https://fb.watch/zWrdwpBvdZ/',
     },
     {
       title: 'Sustainable Finance: The Future of Investment',
