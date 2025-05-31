@@ -108,7 +108,7 @@ const Hero: React.FC = () => {
             }`}
           >
             <Button asChild variant="default" size="lg">
-              <a href="/Nafiz Al Zawad_Resume.pdf" target="_blank" rel="noopener noreferrer">
+              <a href="/Nafiz%20Al%20Zawad_Resume.pdf" target="_blank" rel="noopener noreferrer">Resume</a>
                 <FileText className="mr-2 h-4 w-4" />
                 View Resume
               </a>
