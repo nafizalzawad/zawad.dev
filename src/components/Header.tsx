@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Menu, X } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Link } from 'react-router-dom';
+import Resume from '/Nafiz Al Zawad_Resume.pdf';
 
 const Header: React.FC = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -62,7 +63,7 @@ const Header: React.FC = () => {
             ))}
             <li>
               <Button asChild size="sm" variant="outline" className="border-primary text-primary hover:text-primary-foreground">
-                <a href="/Nafiz Al Zawad_Resume.pdf" target="_blank" rel="noopener noreferrer">Resume</a>
+                <a href={Resume} target="_blank" rel="noopener noreferrer">Resume</a>
               </Button>
             </li>
           </ul>
@@ -115,7 +116,7 @@ const Header: React.FC = () => {
               ))}
               <li className="mt-4">
                 <Button asChild variant="outline" className="border-primary text-primary hover:text-primary-foreground">
-                  <a href="/resume.pdf" target="_blank" rel="noopener noreferrer">Resume</a>
+                  <a href={Resume} target="_blank" rel="noopener noreferrer">Resume</a>
                 </Button>
               </li>
             </ul>
