@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { Button } from '@/components/ui/button';
 import { ArrowDown, FileText } from 'lucide-react';
+import Resume from '/Nafiz Al Zawad_Resume.pdf';
 
 const Hero: React.FC = () => {
   const [isLoaded, setIsLoaded] = useState(false);
@@ -108,7 +109,7 @@ const Hero: React.FC = () => {
             }`}
           >
             <Button asChild variant="default" size="lg">
-              <a href="https://drive.google.com/file/d/1OtiR-i1BMyW611-y54lhVlSX-K3PfJkC/view?usp=drive_link" target="_blank" rel="noopener noreferrer">
+              <a href={Resume} target="_blank" rel="noopener noreferrer">
                 <FileText className="mr-2 h-4 w-4" />
                 View Resume
               </a>
