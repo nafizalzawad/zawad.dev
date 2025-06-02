@@ -82,7 +82,7 @@ const Hero: React.FC = () => {
               isLoaded ? 'translate-y-0 opacity-100' : 'translate-y-4 opacity-0'
             }`}
           >
-            Fariha Binte Pasha.
+            Nafiz Al Zawad.
           </h1>
           
           <h2 
