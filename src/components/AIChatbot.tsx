@@ -15,7 +15,7 @@ const AIChatbot: React.FC = () => {
   const [messages, setMessages] = useState<Message[]>([
     {
       id: '1',
-      text: "Hi! I'm Nafiz's AI assistant. Ask me anything about his background, skills, or projects.",
+      text: "Hi! I'm Zawad's AI assistant. Ask me anything about his background, skills, or projects.",
       isBot: true,
       timestamp: new Date(),
     }
@@ -39,7 +39,7 @@ const AIChatbot: React.FC = () => {
     const msg = userMessage.toLowerCase();
 
     // About section
-    if (msg.includes('about') || msg.includes('background') || msg.includes('who is nafiz')) {
+    if (msg.includes('about') || msg.includes('background') || msg.includes('who is nafiz') || msg.includes('who is zawad')) {
       return "Nafiz Al Zawad is a 4th-year CSE student at UITS, currently a part-time Sales & Marketing Specialist at Ontech ICT.";
     }
 
@@ -147,16 +147,16 @@ const AIChatbot: React.FC = () => {
 
     // Greetings
     if (msg.includes('hello') || msg.includes('hi') || msg.includes('hey') || msg.includes('good')) {
-      return "Hello! Ask me about Nafiz’s background, skills, projects, or experience.";
+      return "Hello! Ask me about Zawad’s background, skills, projects, or experience.";
     }
 
     // Thanks
     if (msg.includes('thank') || msg.includes('thanks')) {
-      return "You're welcome! Let me know if you need more info about Nafiz.";
+      return "You're welcome! Let me know if you need more info about Zawad.";
     }
 
     // Default response
-    return "I have concise info on Nafiz’s role, experience, projects, education, skills, and achievements. What would you like to know?";
+    return "I have concise info on Zawad’s role, experience, projects, education, skills, and achievements. What would you like to know?";
   };
 
   const handleSendMessage = async () => {
@@ -219,7 +219,7 @@ const AIChatbot: React.FC = () => {
             </div>
             <div>
               <h3 className="font-semibold">AI Assistant</h3>
-              <p className="text-xs opacity-90">Ask me anything about Nafiz!</p>
+              <p className="text-xs opacity-90">Ask me anything about Zawad!</p>
             </div>
           </div>
 
