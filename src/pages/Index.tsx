@@ -9,6 +9,7 @@ import Skills from '../components/Skills';
 import Achievements from '../components/Achievements';
 import Contact from '../components/Contact';
 import Footer from '../components/Footer';
+import AIChatbot from '../components/AIChatbot';
 
 const Index: React.FC = () => {
   useEffect(() => {
@@ -49,6 +50,7 @@ const Index: React.FC = () => {
       <Achievements />
       <Contact />
       <Footer />
+      <AIChatbot />
     </div>
   );
 };
