@@ -60,6 +60,28 @@ const Hero: React.FC = () => {
           }}
         />
       </div>
+
+      {/* Floating Particles */}
+      <div className="absolute inset-0 z-1">
+        {Array.from({ length: 20 }).map((_, i) => (
+          <div
+            key={i}
+            className="absolute w-1 h-1 bg-primary rounded-full animate-float"
+            style={{
+              left: `${Math.random() * 100}%`,
+              top: `${Math.random() * 100}%`,
+              animationDelay: `${Math.random() * 10}s`,
+              animationDuration: `${3 + Math.random() * 4}s`,
+            }}
+          />
+        ))}
+      </div>
+
+      {/* Animated Scanning Lines */}
+      <div className="absolute inset-0 z-1">
+        <div className="absolute w-full h-px bg-gradient-to-r from-transparent via-primary to-transparent animate-scan-horizontal" />
+        <div className="absolute h-full w-px bg-gradient-to-b from-transparent via-primary to-transparent animate-scan-vertical" />
+      </div>
       
       <div className="absolute top-0 left-0 w-full h-full bg-gradient-to-b from-background/90 to-background/80 z-1"></div>
       
@@ -90,7 +112,9 @@ const Hero: React.FC = () => {
               isLoaded ? 'translate-y-0 opacity-100' : 'translate-y-4 opacity-0'
             }`}
           >
-            CSE Student | Blockchain & Fintech Enthusiast
+            <span className="animate-text-shimmer bg-gradient-to-r from-slate via-primary to-slate bg-clip-text text-transparent bg-300% bg-size-200">
+              CSE Student | Blockchain & Fintech Enthusiast
+            </span>
           </h2>
           
           <p 
