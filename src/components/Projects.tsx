@@ -46,22 +46,22 @@ const Projects: React.FC = () => {
         
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {projects.map((project, index) => (
-            <Card key={index} className="bg-card overflow-hidden border border-muted card-hover">
+           <Card key={index} className="bg-card overflow-hidden border border-border card-hover">
               <div className="relative h-48 overflow-hidden">
                 <img 
                   src={project.image} 
                   alt={project.title} 
                   className="object-cover w-full h-full transition-transform duration-300 hover:scale-105"
                 />
-                <div className="absolute inset-0 bg-navy-dark/60 flex items-center justify-center opacity-0 hover:opacity-100 transition-opacity duration-300">
+                <div className="absolute inset-0 bg-background/60 flex items-center justify-center opacity-0 hover:opacity-100 transition-opacity duration-300">
                   <div className="flex gap-3">
                     {project.github && (
-                      <a href={project.github} target="_blank" rel="noopener noreferrer" className="bg-navy p-2 rounded-full hover:bg-primary hover:text-primary-foreground transition-colors">
+                      <a href={project.github} target="_blank" rel="noopener noreferrer" className="bg-secondary p-2 rounded-full hover:bg-primary hover:text-primary-foreground transition-colors">
                         <Github className="h-6 w-6" />
                       </a>
                     )}
                     {project.demo && (
-                      <a href={project.demo} target="_blank" rel="noopener noreferrer" className="bg-navy p-2 rounded-full hover:bg-primary hover:text-primary-foreground transition-colors">
+                      <a href={project.demo} target="_blank" rel="noopener noreferrer" className="bg-secondary p-2 rounded-full hover:bg-primary hover:text-primary-foreground transition-colors">
                         <ExternalLink className="h-6 w-6" />
                       </a>
                     )}
@@ -69,11 +69,11 @@ const Projects: React.FC = () => {
                 </div>
               </div>
               <CardHeader>
-                <CardTitle className="flex items-center gap-2 text-xl">
+                <CardTitle className="flex items-center gap-2 text-xl text-foreground">
                   <Code className="h-5 w-5 text-primary" />
                   {project.title}
                 </CardTitle>
-                <CardDescription>{project.description}</CardDescription>
+                 <CardDescription className="text-muted-foreground">{project.description}</CardDescription>
               </CardHeader>
               <CardContent>
                 <div className="flex flex-wrap">
@@ -85,7 +85,7 @@ const Projects: React.FC = () => {
               <CardFooter>
                 <div className="flex gap-3">
                   {project.github && (
-                    <Button variant="outline" size="sm" asChild className="border-primary text-primary hover:text-primary-foreground">
+                    <Button variant="outline" size="sm" asChild className="border-primary text-primary hover:bg-primary hover:text-primary-foreground">
                       <a href={project.github} target="_blank" rel="noopener noreferrer">
                         <Github className="mr-2 h-4 w-4" />
                         Source
