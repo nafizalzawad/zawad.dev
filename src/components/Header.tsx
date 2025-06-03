@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Menu, X } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Link } from 'react-router-dom';
+import ThemeToggle from './ThemeToggle';
 import Resume from '/Nafiz Al Zawad_Resume.pdf';
 
 const Header: React.FC = () => {
@@ -39,7 +40,7 @@ const Header: React.FC = () => {
 
         {/* Desktop Navigation */}
         <nav className="hidden md:block">
-          <ul className="flex space-x-6">
+          <ul className="flex space-x-6 items-center">
             {navLinks.map((link, index) => (
               <li key={link.name}>
                 {link.href.startsWith('/#') ? (
@@ -66,17 +67,23 @@ const Header: React.FC = () => {
                 <a href={Resume} target="_blank" rel="noopener noreferrer">Resume</a>
               </Button>
             </li>
+            <li>
+              <ThemeToggle />
+            </li>
           </ul>
         </nav>
 
-        {/* Mobile Menu Button */}
-        <button 
-          className="md:hidden text-foreground" 
-          onClick={() => setIsMenuOpen(!isMenuOpen)}
-          aria-label="Toggle menu"
-        >
-          {isMenuOpen ? <X /> : <Menu />}
-        </button>
+        {/* Mobile Menu Button and Theme Toggle */}
+        <div className="md:hidden flex items-center gap-2">
+          <ThemeToggle />
+          <button 
+            className="text-foreground" 
+            onClick={() => setIsMenuOpen(!isMenuOpen)}
+            aria-label="Toggle menu"
+          >
+            {isMenuOpen ? <X /> : <Menu />}
+          </button>
+        </div>
       </div>
 
       {/* Mobile Navigation */}
