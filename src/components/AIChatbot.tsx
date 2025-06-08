@@ -15,7 +15,7 @@ const AIChatbot: React.FC = () => {
   const [messages, setMessages] = useState<Message[]>([
     {
       id: '1',
-      text: "Hi! I'm Zawad's AI assistant. Ask me anything about his background, skills, or projects.",
+      text: "Hi! I'm Nafiz's AI assistant. Ask me anything—I'll keep it concise and precise.",
       isBot: true,
       timestamp: new Date(),
     }
@@ -24,7 +24,6 @@ const AIChatbot: React.FC = () => {
   const [isTyping, setIsTyping] = useState(false);
   const messagesEndRef = useRef<HTMLDivElement>(null);
 
-  // Scroll to bottom when new message arrives
   const scrollToBottom = () => {
     if (messagesEndRef.current) {
       messagesEndRef.current.scrollIntoView({ behavior: 'smooth' });
@@ -36,130 +35,134 @@ const AIChatbot: React.FC = () => {
   }, [messages, isTyping]);
 
   const getBotResponse = (userMessage: string): string => {
-    const msg = userMessage.toLowerCase();
+    const msg = userMessage.trim().toLowerCase();
 
-    // About section
-    if (msg.includes('about') || msg.includes('background') || msg.includes('who is nafiz') || msg.includes('who is zawad')) {
-      return "Nafiz Al Zawad is a 4th-year CSE student at UITS, currently a part-time Sales & Marketing Specialist at Ontech ICT.";
+    // Direct contact/link requests
+    if (msg.includes('linkedin')) {
+      return 'LinkedIn: https://www.linkedin.com/in/nafizalzawad';
+    }
+    if (msg.includes('github') || msg.includes('repo') || msg.includes('repository')) {
+      return 'GitHub: https://github.com/nafizalzawad';
     }
 
-    // Current role or education
-    if (msg.includes('current') || msg.includes('role') || msg.includes('ontech') || msg.includes('student')) {
-      return "He's a Sales & Marketing Specialist at Ontech ICT since March 2025, and will begin 7th semester at UITS in July 2025.";
+    // Greetings
+    if (/^(hi|hello|hey|good morning|good afternoon|good evening)\b/.test(msg)) {
+      return "Hello! Ask me about Nafiz’s background, skills, projects, or experience.";
+    }
+    // Thanks
+    if (msg.includes('thank')) {
+      return "You're welcome! Anything else about Nafiz?";
+    }
+
+    // About Nafiz
+    if (msg.match(/\b(who is nafiz|about nafiz|background)\b/)) {
+      return "Nafiz Al Zawad is a 4th-year CSE student at UITS and part-time Sales & Marketing Specialist at Ontech ICT.";
+    }
+
+    // Current role/education
+    if (msg.match(/\b(current role|what do you do|ontech ict|student at uits)\b/)) {
+      return "Since Mar 2025, he's a Sales & Marketing Specialist at Ontech ICT; 7th semester at UITS starts July 2025.";
     }
 
     // Education details
-    if (msg.includes('education') || msg.includes('university') || msg.includes('uits') || msg.includes('cse')) {
-      return "Nafiz studies CSE at UITS (7th semester from July 2025). He completed projects like TrafficMind (Flask/MySQL) and a football club website.";
+    if (msg.match(/\b(education|university|uits|cse)\b/)) {
+      return "Studying CSE at UITS (7th semester from July 2025). Completed projects: TrafficMind (Flask/MySQL) and a football club site.";
     }
 
     // Professional experience
-    if (msg.includes('experience') || msg.includes('work') || msg.includes('job') || msg.includes('doin') || msg.includes('eightcap')) {
+    if (msg.match(/\b(experience|work history|jobs|doin tech|eightcap|oyolloo)\b/)) {
       if (msg.includes('doin')) {
-        return "At Doin Tech (Jan 2024–Dec 2024), he managed 4,500+ clients for fintech products and was 2nd top performer.";
+        return "Doin Tech (Jan 2024–Dec 2024): managed 4,500+ clients, 2nd top performer, $20K sales in Q4 2024.";
       }
       if (msg.includes('eightcap')) {
-        return "At Eightcap (Feb 2025), he organized Bangladesh’s first Forex Education webinar.";
+        return "Eightcap (Feb 2025): organized Bangladesh’s first Forex Education webinar.";
       }
       if (msg.includes('oyolloo')) {
-        return "He briefly trained at Oyolloo in March 2025 but left before onboarding.";
+        return "Oyolloo (Mar 2025): brief trainee, left before onboarding.";
       }
-      return "He worked at Doin Tech (Jan 2024–Dec 2024), Eightcap (Feb 2025), and now at Ontech ICT (since Mar 2025).";
+      return "Worked at Doin Tech (Jan 2024–Dec 2024), Eightcap (Feb 2025), now Ontech ICT (since Mar 2025).";
     }
 
     // Technical skills
-    if (msg.includes('skills') || msg.includes('technology') || msg.includes('programming')) {
+    if (msg.match(/\b(skills|technology|programming|tech stack)\b/)) {
       if (msg.includes('programming') || msg.includes('language')) {
-        return "He codes in Python (Flask), PHP, HTML/CSS/JS, and develops blockchain smart contracts.";
+        return "Languages: Python (Flask), PHP, HTML/CSS/JS; also blockchain smart contracts.";
       }
       if (msg.includes('database') || msg.includes('mysql')) {
-        return "He uses MySQL for schema design and optimization, as seen in TrafficMind.";
+        return "Database: MySQL—schema design, ER diagrams, optimization (used in TrafficMind).";
       }
       if (msg.includes('blockchain')) {
-        return "He built MediChain, a blockchain-based medical records system with smart contracts.";
+        return "Blockchain: built MediChain—a medical records DApp with smart contracts.";
       }
-      return "Skills: Python, Flask, MySQL, PHP, JavaScript, HTML, CSS, Bootstrap, Socket.IO, and blockchain.";
+      return "Skills: Python, Flask, MySQL, PHP, JavaScript, HTML, CSS, Bootstrap, Socket.IO, blockchain.";
     }
 
-    // Projects section
-    if (msg.includes('projects') || msg.includes('portfolio') || msg.includes('trafficmind') || msg.includes('medichain')) {
+    // Projects
+    if (msg.match(/\b(projects|portfolio|trafficmind|medichain|football site)\b/)) {
       if (msg.includes('trafficmind')) {
-        return "TrafficMind is a Flask/MySQL vehicle management system with real-time updates via Socket.IO (see GitHub).";
+        return "TrafficMind: Flask/MySQL vehicle management system with real-time updates via Socket.IO (see GitHub).";
       }
       if (msg.includes('medichain')) {
-        return "MediChain is a completed blockchain medical management system; code and docs are on GitHub.";
+        return "MediChain: completed blockchain medical management system—code and docs on GitHub.";
       }
       if (msg.includes('football')) {
-        return "He built a football club website in 2023 using vanilla HTML and CSS.";
+        return "Built a football club website in 2023 using vanilla HTML/CSS.";
       }
-      return "Key projects: TrafficMind (Flask/MySQL), MediChain (blockchain), and a football club website (HTML/CSS).";
+      return "Key projects: TrafficMind, MediChain, and a 2023 football club site.";
     }
 
-    // Achievements and awards
-    if (msg.includes('achievements') || msg.includes('awards') || msg.includes('fifa') || msg.includes('reading')) {
+    // Achievements/awards
+    if (msg.match(/\b(achievements|awards|fifa|reading|top performer)\b/)) {
       if (msg.includes('fifa')) {
-        return "He's a FIFA Community Volunteer since 2022 and was invited to the 2022 FIFA World Cup.";
+        return "FIFA Community Volunteer since 2022; invited to 2022 FIFA World Cup.";
       }
       if (msg.includes('reading') || msg.includes('bishwo')) {
-        return "He won Bishwo Shahitto Kendro reading awards in 2015 and 2016.";
+        return "Won Bishwo Shahitto Kendro reading awards in 2015 and 2016.";
       }
-      if (msg.includes('top') || msg.includes('performer')) {
-        return "At Doin Tech, he was the 2nd top performer in customer service with $20K sales in Q4 2024.";
+      if (msg.match(/\b(top performer|sales)\b/)) {
+        return "At Doin Tech, 2nd top performer; $20K in Q4 2024 sales.";
       }
-      return "Achievements: FIFA volunteer since 2022, Bishwo Shahitto Kendro reading awards (2015–2016), and top performer at Doin Tech.";
+      return "Achievements: FIFA volunteer, Bishwo Shahitto Kendro awards, and top performer at Doin Tech.";
     }
 
-    // Location and personal details
-    if (msg.includes('location') || msg.includes('dhaka') || msg.includes('bangladesh') || msg.includes('where')) {
-      return "He lives in Dhaka, Bangladesh, within walking distance of his office.";
+    // Location/personal
+    if (msg.match(/\b(location|where|dhaka|bangladesh)\b/)) {
+      return "Based in Dhaka, Bangladesh—walking distance to his office.";
     }
 
-    // Interests and personal life
-    if (msg.includes('interests') || msg.includes('hobbies') || msg.includes('football') || msg.includes('concert') || msg.includes('kaavish')) {
+    // Interests/personal life
+    if (msg.match(/\b(interests|hobbies|football|concert|kaavish)\b/)) {
       if (msg.includes('concert') || msg.includes('kaavish')) {
-        return "He attended his first concert, Kaavish at Dhaka Dreams on Jan 24, 2025, and made a POV video 'From Couch to Crowd'.";
+        return "Attended first concert—Kaavish at Dhaka Dreams on Jan 24, 2025; made a POV video 'From Couch to Crowd'.";
       }
       if (msg.includes('football')) {
-        return "He loves football journalism and built a club website.";
+        return "Passionate about football—writes articles and built a club website.";
       }
       return "Interests: football, blockchain, forex, reading, web development, and live music.";
     }
 
-    // Contact and online presence
-    if (msg.includes('contact') || msg.includes('portfolio') || msg.includes('github') || msg.includes('linkedin') || msg.includes('website')) {
-      return "Portfolio: zawad-dev.vercel.app | GitHub: github.com/nafizalzawad | LinkedIn: linkedin.com/in/nafizalzawad";
-    }
-
-    // Soft skills and work style
-    if (msg.includes('soft skills') || msg.includes('communication') || msg.includes('leadership') || msg.includes('management')) {
+    // Soft skills
+    if (msg.match(/\b(soft skills|communication|leadership|management|problem-solving)\b/)) {
       return "Soft skills: communication, time management, leadership, problem-solving, and adaptability.";
     }
 
-    // Learning style and preferences
-    if (msg.includes('learning') || msg.includes('style') || msg.includes('communication style')) {
-      return "He prefers concise, structured explanations with examples, step-by-step guides, and real-world analogies.";
+    // Learning style
+    if (msg.match(/\b(learning style|how do you learn|education style)\b/)) {
+      return "Prefers concise, structured explanations with examples, step-by-step guides, and real-world analogies.";
     }
 
-    // Current projects and timeline
-    if (msg.includes('current projects') || msg.includes('timeline') || msg.includes('2025') || msg.includes('july')) {
-      return "MediChain is completed. He's working at Ontech ICT and will start 7th semester at UITS in July 2025.";
+    // Current timeline
+    if (msg.match(/\b(current projects|timeline|2025|july 2025)\b/)) {
+      return "MediChain is complete. Working at Ontech ICT; 7th semester at UITS begins July 2025.";
     }
 
-    // Greetings
-    if (msg.includes('hello') || msg.includes('hi') || msg.includes('hey') || msg.includes('good')) {
-      return "Hello! Ask me about Zawad’s background, skills, projects, or experience.";
-    }
-
-    // Thanks
-    if (msg.includes('thank') || msg.includes('thanks')) {
-      return "You're welcome! Let me know if you need more info about Zawad.";
-    }
-
-    // Default response
-    return "I have concise info on Zawad’s role, experience, projects, education, skills, and achievements. What would you like to know?";
+    // Catch-all: if no recognized keyword
+    return "I’m not sure, but you can check LinkedIn or GitHub for more info:\n" +
+           "LinkedIn: https://www.linkedin.com/in/nafizalzawad\n" +
+           "GitHub: https://github.com/nafizalzawad";
   };
 
-  const handleSendMessage = async () => {
+  const handleSendMessage = () => {
     if (!inputText.trim()) return;
 
     const userMessage: Message = {
@@ -173,7 +176,6 @@ const AIChatbot: React.FC = () => {
     setInputText('');
     setIsTyping(true);
 
-    // Simulate typing delay
     setTimeout(() => {
       const botResponse: Message = {
         id: (Date.now() + 1).toString(),
@@ -183,7 +185,7 @@ const AIChatbot: React.FC = () => {
       };
       setMessages(prev => [...prev, botResponse]);
       setIsTyping(false);
-    }, 500 + Math.random() * 500);
+    }, 400 + Math.random() * 400);
   };
 
   const handleKeyPress = (e: React.KeyboardEvent) => {
@@ -219,7 +221,7 @@ const AIChatbot: React.FC = () => {
             </div>
             <div>
               <h3 className="font-semibold">AI Assistant</h3>
-              <p className="text-xs opacity-90">Ask me anything about Zawad!</p>
+              <p className="text-xs opacity-90">Concise, precise answers about Nafiz.</p>
             </div>
           </div>
 
@@ -255,7 +257,7 @@ const AIChatbot: React.FC = () => {
                 )}
               </div>
             ))}
-            
+
             {isTyping && (
               <div className="flex gap-3 animate-fade-in">
                 <div className="w-8 h-8 bg-primary/20 rounded-full flex items-center justify-center">
