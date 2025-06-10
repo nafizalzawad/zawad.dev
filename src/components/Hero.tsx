@@ -61,6 +61,43 @@ const Hero: React.FC = () => {
         />
       </div>
 
+      {/* Moving Grid Background - Light Mode */}
+      <div className="absolute inset-0 z-0 block dark:hidden">
+        <div 
+          className="absolute inset-0 opacity-40 transition-transform duration-300 ease-out"
+          style={{
+            backgroundImage: `
+              linear-gradient(rgba(22, 101, 52, 0.6) 1px, transparent 1px),
+              linear-gradient(90deg, rgba(22, 101, 52, 0.6) 1px, transparent 1px)
+            `,
+            backgroundSize: '50px 50px',
+            transform: `translate(${mousePosition.x * 0.1}px, ${mousePosition.y * 0.1}px)`,
+          }}
+        />
+        <div 
+          className="absolute inset-0 opacity-30 transition-transform duration-500 ease-out"
+          style={{
+            backgroundImage: `
+              linear-gradient(rgba(22, 101, 52, 0.7) 1px, transparent 1px),
+              linear-gradient(90deg, rgba(22, 101, 52, 0.7) 1px, transparent 1px)
+            `,
+            backgroundSize: '100px 100px',
+            transform: `translate(${mousePosition.x * 0.05}px, ${mousePosition.y * 0.05}px)`,
+          }}
+        />
+        <div 
+          className="absolute inset-0 opacity-20 transition-transform duration-700 ease-out"
+          style={{
+            backgroundImage: `
+              linear-gradient(rgba(22, 101, 52, 0.8) 1px, transparent 1px),
+              linear-gradient(90deg, rgba(22, 101, 52, 0.8) 1px, transparent 1px)
+            `,
+            backgroundSize: '150px 150px',
+            transform: `translate(${mousePosition.x * 0.02}px, ${mousePosition.y * 0.02}px)`,
+          }}
+        />
+      </div>
+
       {/* Floating Particles */}
       <div className="absolute inset-0 z-1">
         {Array.from({ length: 20 }).map((_, i) => (
