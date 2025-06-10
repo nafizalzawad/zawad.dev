@@ -103,7 +103,7 @@ const Hero: React.FC = () => {
         {Array.from({ length: 20 }).map((_, i) => (
           <div
             key={i}
-            className="absolute w-1 h-1 bg-primary rounded-full animate-float"
+            className="absolute w-1 h-1 rounded-full animate-float dark:bg-primary/40 bg-primary/80"
             style={{
               left: `${Math.random() * 100}%`,
               top: `${Math.random() * 100}%`,
