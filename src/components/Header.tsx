@@ -46,7 +46,7 @@ const Header: React.FC = () => {
                 {link.href.startsWith('/#') ? (
                   <a 
                     href={link.href}
-                    className="nav-link text-slate hover:text-primary px-1 py-2 text-sm font-medium"
+                    className="relative text-slate hover:text-primary px-1 py-2 text-sm font-medium transition-colors duration-300 after:absolute after:bottom-0 after:left-0 after:h-[2px] after:w-full after:bg-primary after:scale-x-0 after:transition-transform after:duration-300 after:origin-left hover:after:scale-x-100"
                   >
                     <span className="text-primary mr-1">{`0${index + 1}.`}</span>
                     {link.name}
@@ -54,7 +54,7 @@ const Header: React.FC = () => {
                 ) : (
                   <Link 
                     to={link.href}
-                    className="nav-link text-slate hover:text-primary px-1 py-2 text-sm font-medium"
+                    className="relative text-slate hover:text-primary px-1 py-2 text-sm font-medium transition-colors duration-300 after:absolute after:bottom-0 after:left-0 after:h-[2px] after:w-full after:bg-primary after:scale-x-0 after:transition-transform after:duration-300 after:origin-left hover:after:scale-x-100"
                   >
                     <span className="text-primary mr-1">{`0${index + 1}.`}</span>
                     {link.name}
