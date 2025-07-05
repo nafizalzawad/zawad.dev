@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Crown, Sparkles, Users, Zap, ArrowLeft } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
@@ -7,6 +7,11 @@ import Header from '../components/Header';
 import Footer from '../components/Footer';
 
 const PremiumPortfolioPage: React.FC = () => {
+  // Scroll to top when component mounts
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
   const features = [
     {
       icon: <Crown className="h-6 w-6" />,
@@ -30,6 +35,7 @@ const PremiumPortfolioPage: React.FC = () => {
     }
   ];
 
+  // ... keep existing code (return statement with JSX)
   return (
     <div className="min-h-screen flex flex-col">
       <Header />
