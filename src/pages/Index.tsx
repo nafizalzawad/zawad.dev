@@ -7,6 +7,8 @@ import Projects from '../components/Projects';
 import Writing from '../components/Writing';
 import Skills from '../components/Skills';
 import Achievements from '../components/Achievements';
+import Newsletter from '../components/Newsletter';
+import PremiumServices from '../components/PremiumServices';
 import Contact from '../components/Contact';
 import Footer from '../components/Footer';
 import AIChatbot from '../components/AIChatbot';
@@ -48,6 +50,8 @@ const Index: React.FC = () => {
       <Writing />
       <Skills />
       <Achievements />
+      <Newsletter />
+      <PremiumServices />
       <Contact />
       <Footer />
       <AIChatbot />
