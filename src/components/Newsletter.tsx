@@ -8,14 +8,30 @@ const Newsletter: React.FC = () => {
   const [email, setEmail] = useState('');
   const [isSubmitted, setIsSubmitted] = useState(false);
 
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    // TODO: Integrate with email service
-    console.log('Newsletter signup:', email);
-    setIsSubmitted(true);
-    setEmail('');
-    setTimeout(() => setIsSubmitted(false), 3000);
-  };
+  const handleSubmit = async (e: React.FormEvent) => {
+  e.preventDefault();
+  try {
+    const response = await fetch("https://script.google.com/macros/s/https://script.google.com/macros/s/AKfycbzSDIWBGSm1GHgBzFtvd2lpNyBDiWvHRMxMNcmquYhQJ92_AScUJHz9n2Xrb4yCfaMx/exec/exec", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/x-www-form-urlencoded",
+      },
+      body: new URLSearchParams({ email }),
+    });
+
+    if (response.ok) {
+      console.log("Success:", await response.text());
+      setIsSubmitted(true);
+      setEmail('');
+      setTimeout(() => setIsSubmitted(false), 3000);
+    } else {
+      console.error("Failed to submit email");
+    }
+  } catch (err) {
+    console.error("Error:", err);
+  }
+};
+
 
   return (
     <section className="py-20 bg-muted/30">
