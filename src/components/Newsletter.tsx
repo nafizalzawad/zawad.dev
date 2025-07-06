@@ -15,7 +15,7 @@ const Newsletter: React.FC = () => {
     setLoading(true);
     setError('');
     try {
-      const response = await fetch("https://script.google.com/macros/s/AKfycbzXHRAzEy5sJ4hHQybMRjP5rdaRbflozmbugvS_Ezg114oQMJZy_jboouuOCGXDvOAc/exec", {
+      const response = await fetch("https://script.google.com/macros/s/AKfycbxnEfBn8fE9XHjKjUJK4YiNg3m_m1jpuYdaeq3Ke9xRKNjNhXQh8FlPueUGAPojXq-1qw/exec", {
         method: "POST",
         headers: {
           "Content-Type": "application/x-www-form-urlencoded",
