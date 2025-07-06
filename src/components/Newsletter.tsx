@@ -16,7 +16,7 @@ const Newsletter: React.FC = () => {
     setError('');
     try {
       const response = await fetch(
-        "https://script.google.com/macros/s/AKfycby8g5KGV7DT_nZPBoL6lUxhJbSQ7ubYuuKHjFmVa3dZx_ybHXDH_XTeHjKeWTU_19To/exec",
+        "https://script.google.com/macros/s/AKfycbzXHRAzEy5sJ4hHQybMRjP5rdaRbflozmbugvS_Ezg114oQMJZy_jboouuOCGXDvOAc/exec",
         {
           method: "POST",
           headers: {
