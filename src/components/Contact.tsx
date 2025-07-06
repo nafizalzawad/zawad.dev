@@ -95,7 +95,7 @@ const Contact: React.FC = () => {
   };
 
   const socialLinks = [
-    { name: 'Email', icon: <Mail className="h-6 w-6" />, link: 'mailto:alzawadnafiz@gmail.com', label: 'alzawadnafiz@gmail.com' },
+    { name: 'Email', icon: <Mail className="h-6 w-6" />, link: 'mailto:contact@zawad.dev', label: 'contact@zawad.dev' },
     { name: 'LinkedIn', icon: <Linkedin className="h-6 w-6" />, link: 'https://linkedin.com/in/nafizalzawad', label: '/nafizalzawad' },
     { name: 'GitHub', icon: <Github className="h-6 w-6" />, link: 'https://github.com/nafizalzawad', label: '/nafizalzawad' },
   ];
