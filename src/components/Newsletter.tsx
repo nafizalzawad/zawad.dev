@@ -7,31 +7,38 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/com
 const Newsletter: React.FC = () => {
   const [email, setEmail] = useState('');
   const [isSubmitted, setIsSubmitted] = useState(false);
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState('');
 
   const handleSubmit = async (e: React.FormEvent) => {
-  e.preventDefault();
-  try {
-    const response = await fetch("https://script.google.com/macros/s/https://script.google.com/macros/s/AKfycbzimK_y4uWsiIDrYtvPXr08A1M0cDCkWjB0nJ7lemXYuYdTiW-BP1Uz6fms6dWSuVfR/exec", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/x-www-form-urlencoded",
-      },
-      body: new URLSearchParams({ email }),
-    });
+    e.preventDefault();
+    setLoading(true);
+    setError('');
+    try {
+      const response = await fetch(
+        "https://script.google.com/macros/s/AKfycbwPNBaBaDWVO5x_6oQk1sFZHEzIbMLp_msakNZ8we34uh2eF_AsHUV2GsZrz-LH6SeJ/exec",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/x-www-form-urlencoded",
+          },
+          body: new URLSearchParams({ email }),
+        }
+      );
 
-    if (response.ok) {
-      console.log("Success:", await response.text());
-      setIsSubmitted(true);
-      setEmail('');
-      setTimeout(() => setIsSubmitted(false), 3000);
-    } else {
-      console.error("Failed to submit email");
+      if (response.ok) {
+        setIsSubmitted(true);
+        setEmail('');
+        setTimeout(() => setIsSubmitted(false), 3000);
+      } else {
+        setError('Something went wrong. Please try again.');
+      }
+    } catch (err) {
+      setError('Network error. Please check your internet connection.');
+    } finally {
+      setLoading(false);
     }
-  } catch (err) {
-    console.error("Error:", err);
-  }
-};
-
+  };
 
   return (
     <section className="py-20 bg-muted/30">
@@ -42,7 +49,7 @@ const Newsletter: React.FC = () => {
               <Mail className="h-8 w-8 text-primary" />
             </div>
           </div>
-          
+
           <h2 className="text-3xl font-bold mb-4">Stay Connected</h2>
           <p className="text-lg text-muted-foreground mb-8 max-w-2xl mx-auto">
             Join thousands of tech enthusiasts receiving my weekly newsletter. Get exclusive insights on 
@@ -72,9 +79,18 @@ const Newsletter: React.FC = () => {
                     required
                     className="w-full"
                   />
-                  <Button type="submit" className="w-full" size="lg">
-                    <Send className="h-4 w-4 mr-2" />
-                    Subscribe for Free
+
+                  {error && <p className="text-sm text-red-500">{error}</p>}
+
+                  <Button type="submit" className="w-full" size="lg" disabled={loading}>
+                    {loading ? (
+                      "Subscribing..."
+                    ) : (
+                      <>
+                        <Send className="h-4 w-4 mr-2" />
+                        Subscribe for Free
+                      </>
+                    )}
                   </Button>
                 </form>
               )}
