@@ -15,30 +15,24 @@ const Newsletter: React.FC = () => {
     setLoading(true);
     setError('');
     try {
-      const response = await fetch(
-        "https://script.google.com/macros/s/AKfycbzXHRAzEy5sJ4hHQybMRjP5rdaRbflozmbugvS_Ezg114oQMJZy_jboouuOCGXDvOAc/exec",
-        {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/x-www-form-urlencoded",
-          },
-          body: new URLSearchParams({ email }),
-        }
-      );
+      const response = await fetch("https://script.google.com/macros/s/AKfycbzXHRAzEy5sJ4hHQybMRjP5rdaRbflozmbugvS_Ezg114oQMJZy_jboouuOCGXDvOAc/exec", {
+  method: "POST",
+  headers: {
+    "Content-Type": "application/x-www-form-urlencoded",
+  },
+  body: new URLSearchParams({ email }),
+});
 
-      if (response.ok) {
-        setIsSubmitted(true);
-        setEmail('');
-        setTimeout(() => setIsSubmitted(false), 3000);
-      } else {
-        setError('Something went wrong. Please try again.');
-      }
-    } catch (err) {
-      setError('Network error. Please check your internet connection.');
-    } finally {
-      setLoading(false);
-    }
-  };
+const text = await response.text(); // 👈 parse as plain text
+
+if (response.ok && text === "Success") {
+  setIsSubmitted(true);
+  setEmail('');
+  setTimeout(() => setIsSubmitted(false), 3000);
+} else {
+  setError('Something went wrong. Please try again.');
+}
+
 
   return (
     <section className="py-20 bg-muted/30">
