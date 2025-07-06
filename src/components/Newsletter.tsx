@@ -11,7 +11,7 @@ const Newsletter: React.FC = () => {
   const handleSubmit = async (e: React.FormEvent) => {
   e.preventDefault();
   try {
-    const response = await fetch("https://script.google.com/macros/s/https://script.google.com/macros/s/AKfycbzSDIWBGSm1GHgBzFtvd2lpNyBDiWvHRMxMNcmquYhQJ92_AScUJHz9n2Xrb4yCfaMx/exec/exec", {
+    const response = await fetch("https://script.google.com/macros/s/https://script.google.com/macros/s/AKfycbzimK_y4uWsiIDrYtvPXr08A1M0cDCkWjB0nJ7lemXYuYdTiW-BP1Uz6fms6dWSuVfR/exec", {
       method: "POST",
       headers: {
         "Content-Type": "application/x-www-form-urlencoded",
