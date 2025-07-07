@@ -59,7 +59,7 @@ const Newsletter: React.FC = () => {
             <CardHeader className="pb-4">
               <CardTitle className="text-xl">Free Weekly Updates</CardTitle>
               <CardDescription>
-                No spam, unsubscribe anytime. Just valuable content delivered to your inbox.
+                By subscribing, you agree to receive email updates from me. No spam, unsubscribe anytime.
               </CardDescription>
             </CardHeader>
             <CardContent>
