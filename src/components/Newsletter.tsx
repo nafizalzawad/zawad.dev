@@ -16,7 +16,7 @@ const Newsletter: React.FC = () => {
     setLoading(true);
     setError('');
     try {
-      const response = await fetch("https://script.google.com/macros/s/YOUR_NEW_ENDPOINT/exec", {
+      const response = await fetch("https://script.google.com/macros/s/AKfycbyAtVwr-uyDzDMO_TK6NpTgPsIT-oCB1Equh_l2izmWcjbIYexZi7vcYoUO5Ub-_1Miag/exec", {
         method: "POST",
         headers: {
           "Content-Type": "application/x-www-form-urlencoded",
