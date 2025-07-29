@@ -10,7 +10,7 @@ const About: React.FC = () => {
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 items-start">
           <div className="col-span-2">
             <p className="text-lg mb-4">
-              I'm a 3rd-year Computer Science student from Bangladesh with a passion for blockchain technology, 
+              I'm a 4th-year Computer Science student from Bangladesh with a passion for blockchain technology, 
               fintech solutions, and creating human-centered digital experiences.
             </p>
             
